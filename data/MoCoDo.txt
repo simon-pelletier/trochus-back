@@ -1,0 +1,34 @@
+:
+USER: email, pseudo, password, location, searchPerimeter, activated
+HAS, 11 USER, 0N ROLE
+ROLE: type
+
+TRADED, 0N USER, 11 ITEM: sellingPrice
+OWN, 11 ITEM, 0N USER
+WANT, 0N ITEM, 0N USER
+:
+
+:
+ITEM: name, value, description, condition, sold
+:
+:
+
+
+
+
+
+
+:
+USER: email, pseudo, password, location, searchPerimeter, activated
+HAS, 11 USER, 0N ROLE
+ROLE: type
+
+TRADED, 0N ITEM, 0N ITEM
+OWN, 11 ITEM, 0N USER
+WANT, 0N ITEM, 0N USER
+:
+
+:
+ITEM: name, estimation, description, condition, sold
+:
+:
