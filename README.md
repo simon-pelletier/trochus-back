@@ -36,7 +36,7 @@ sequelize db:seed:all
 npm run resetdb
 ```
 
-## Run the serveur
+## Run the server
 ```
 npm start
 ```
