@@ -38,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     roleId: DataTypes.INTEGER,
   }, {
     sequelize,
+    tableName: 'users',
     modelName: 'User',
   });
   return User;

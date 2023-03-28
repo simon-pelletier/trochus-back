@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     confirmed: { type: DataTypes.BOOLEAN, defaultValue: false },
   }, {
     sequelize,
+    tableName: 'tradeds',
     modelName: 'Traded',
   });
   return Traded;

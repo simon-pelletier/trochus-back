@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER
   }, {
     sequelize,
+    tableName: 'wants',
     modelName: 'Want',
   });
   return Want;

@@ -1,8 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Hello World!");
+const sequelize = require('../models/index.js');
+
+router.get("/", async (req, res) => {
+  // res.send("Hello World!");
+  const users = await sequelize.User.findAll({
+    include: [ sequelize.Item ]
+  });
+  res.json(users);
 });
 
 // 404 Route
