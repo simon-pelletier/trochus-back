@@ -1,8 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
+const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const itemRoutes = require('./routes/item');
+
+// auth routes
+router.use('/auth', authRoutes);
 
 // items routes
 router.use('/items', itemRoutes);
