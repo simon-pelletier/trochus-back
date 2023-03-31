@@ -36,6 +36,9 @@ sequelize db:seed:all
 npm run resetdb
 ```
 
+### Front repository :
+[https://github.com/simon-pelletier/trochus-front](https://github.com/simon-pelletier/trochus-front)
+
 ## Run the server
 ```
 npm start
