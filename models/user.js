@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     location: DataTypes.STRING,
     searchPerimeter: DataTypes.INTEGER,
-    activated: { type: DataTypes.BOOLEAN, defaultValue: false },
+    activated: DataTypes.BOOLEAN,
     address: DataTypes.STRING,
     postalCode: DataTypes.STRING,
     city: DataTypes.STRING,

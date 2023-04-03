@@ -11,6 +11,7 @@ module.exports = {
       },
       itemId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'items',
           key: 'id',
@@ -19,6 +20,7 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'users',
           key: 'id',
@@ -29,10 +31,14 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       accepted: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0,
+        allowNull: false,
       },
       confirmed: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

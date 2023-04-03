@@ -3,11 +3,15 @@ const express = require('express');
 const router = express.Router();
 
 // POST /api/auth
-// Create a user to signup
-router.post('/signup', authController.signup);
+// Create a user to register
+router.post('/register', authController.register);
 
 // POST /api/auth
-// Post one user to signin
-router.post('/signin', authController.signin);
+// Post one user to login
+router.post('/login', authController.login);
+
+// GET /api/auth
+// Email verification
+router.get('/verify/verificationCode', authController.verifyEmail);
 
 module.exports = router;

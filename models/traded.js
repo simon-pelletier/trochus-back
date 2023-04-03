@@ -23,8 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     itemId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     transactionId: DataTypes.INTEGER,
-    accepted: { type: DataTypes.BOOLEAN, defaultValue: false },
-    confirmed: { type: DataTypes.BOOLEAN, defaultValue: false },
+    accepted: DataTypes.BOOLEAN,
+    confirmed: DataTypes.BOOLEAN,
   }, {
     sequelize,
     tableName: 'tradeds',

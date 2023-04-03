@@ -3,14 +3,17 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+
+    
+
     await queryInterface.bulkInsert("users", [
       {
-        email: "admin@localhost",
+        email: "admin@admin.com",
         pseudo: "admin",
         lastname: "admin",
         firstname: "admin",
         dateOfBirth: "2021-03-27",
-        password: "1234",
+        password: "$2b$10$7lJqKBcNR2lKtarEyeLhR.3zoh6Y2eOuhen7Bhll48FGqBb4LTGly",
         location: "{48.856613, 2.352222}",
         searchPerimeter: 0,
         activated: true,
@@ -22,12 +25,12 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        email: "johndoe@localhost",
+        email: "johndoe@localhost.com",
         pseudo: "johndoe",
         lastname: "doe",
         firstname: "john",
         dateOfBirth: "2021-03-27",
-        password: "1234",
+        password: "$2b$10$7lJqKBcNR2lKtarEyeLhR.3zoh6Y2eOuhen7Bhll48FGqBb4LTGly",
         location: "{48.856613, 2.352222}",
         searchPerimeter: 0,
         activated: false,
@@ -39,12 +42,12 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        email: "johndoe2@localhost",
+        email: "johndoe2@localhost.com",
         pseudo: "johndoe2",
         lastname: "doe2",
         firstname: "john2",
         dateOfBirth: "2021-03-27",
-        password: "1234",
+        password: "$2b$10$7lJqKBcNR2lKtarEyeLhR.3zoh6Y2eOuhen7Bhll48FGqBb4LTGly",
         location: "{48.856613, 2.352222}",
         searchPerimeter: 0,
         activated: false,

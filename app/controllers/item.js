@@ -4,7 +4,23 @@ module.exports = {
   // GET /api/items
   // Get all items
   async getAllItems(req, res) {
-    const items = await sequelize.Item.findAll({});
+    const items = await sequelize.Item.findAll({
+        where: {
+            published: true,
+        },
+        include: [sequelize.User],
+    });
+    res.json(items);
+  },
+  // GET /api/items/user/:id
+  // Get all items by user
+  async getAllItemsByUser(req, res) {
+    console.log('req.params.id: ', req.params.id);
+    const items = await sequelize.Item.findAll({
+      where: {
+        userId: req.params.id,
+      },
+    });
     res.json(items);
   },
   // GET /api/items/:id

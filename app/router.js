@@ -6,13 +6,13 @@ const userRoutes = require('./routes/user');
 const itemRoutes = require('./routes/item');
 
 // auth routes
-router.use('/auth', authRoutes);
+router.use('/api/auth', authRoutes);
 
 // items routes
-router.use('/items', itemRoutes);
+router.use('/api/items', itemRoutes);
 
 // users routes
-router.use('/users', userRoutes);
+router.use('/api/users', userRoutes);
 
 // 404 Route
 router.use('*', (req, res) => {

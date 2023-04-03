@@ -6,6 +6,10 @@ const router = express.Router();
 // Get all items
 router.get('/', itemController.getAllItems);
 
+// GET /api/items/user/:id
+// Get all items by user
+router.get('/user/:id', itemController.getAllItemsByUser);
+
 // GET /api/items/:id
 // Get one item
 router.get('/:id', itemController.getOneItem);
