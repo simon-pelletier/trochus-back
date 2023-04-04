@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "userId",
         onDelete: "CASCADE",
       });
+      Item.belongsToMany(models.Category, {
+        through: 'ItemHasCategory',
+      });
     }
   }
   Item.init(
