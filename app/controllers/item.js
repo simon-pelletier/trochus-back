@@ -12,6 +12,18 @@ module.exports = {
     });
     res.json(items);
   },
+  // GET /api/items/published
+  // Get all published items
+  async getAllPublishedItems(req, res) {
+    const items = await sequelize.Item.findAll({
+      where: {
+        published: true,
+        traded: false,
+      },
+      include: [sequelize.User, sequelize.Category],
+    });
+    res.json(items);
+  },
   // GET /api/items/user/:id
   // Get all items by user
   async getAllItemsByUser(req, res) {
@@ -20,7 +32,7 @@ module.exports = {
       where: {
         userId: req.params.id,
       },
-      include: [sequelize.Category],
+      include: [sequelize.User, sequelize.Category],
     });
     res.json(items);
   },
@@ -36,6 +48,11 @@ module.exports = {
   // Create an item
   async createItem(req, res) {
     const item = await sequelize.Item.create(req.body);
+    const categories = req.body.categories;
+    categories.forEach(async (category) => {
+        const categoryToAdd = await sequelize.Category.findByPk(category.id);
+        await item.addCategory(categoryToAdd);
+    });
     res.json(item);
   },
   // PUT /api/items/:id
