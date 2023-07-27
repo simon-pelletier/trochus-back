@@ -27,7 +27,6 @@ module.exports = {
   // GET /api/items/user/:id
   // Get all items by user
   async getAllItemsByUser(req, res) {
-    console.log("req.params.id: ", req.params.id);
     const items = await sequelize.Item.findAll({
       where: {
         userId: req.params.id,
@@ -48,9 +47,9 @@ module.exports = {
   // Create an item
   async createItem(req, res) {
     const item = await sequelize.Item.create(req.body);
-    const categories = req.body.categories;
-    categories.forEach(async (category) => {
-        const categoryToAdd = await sequelize.Category.findByPk(category.id);
+    const categoriesIds = req.body.categories;
+    categoriesIds.forEach(async (categoryId) => {
+        const categoryToAdd = await sequelize.Category.findByPk(categoryId);
         await item.addCategory(categoryToAdd);
     });
     res.json(item);
