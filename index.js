@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3001;
 
+app.use('/public', express.static('public'));
+app.use('/images', express.static('public/images'));
+
 const router = require('./app/router.js');
 
 app.use(cors());
