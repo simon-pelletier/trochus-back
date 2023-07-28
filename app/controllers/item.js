@@ -1,5 +1,7 @@
 const sequelize = require("../../models/index.js");
 
+const crypto = require("crypto");
+
 module.exports = {
   // GET /api/items
   // Get all items
@@ -8,19 +10,30 @@ module.exports = {
       where: {
         published: true,
       },
-      include: [sequelize.User, sequelize.Category],
+      include: [sequelize.User, sequelize.Category, sequelize.Image],
+    });
+    res.json(items);
+  },
+  // GET /api/items/published
+  // Get all published items
+  async getAllPublishedItems(req, res) {
+    const items = await sequelize.Item.findAll({
+      where: {
+        published: true,
+        traded: false,
+      },
+      include: [sequelize.User, sequelize.Category, sequelize.Image],
     });
     res.json(items);
   },
   // GET /api/items/user/:id
   // Get all items by user
   async getAllItemsByUser(req, res) {
-    console.log("req.params.id: ", req.params.id);
     const items = await sequelize.Item.findAll({
       where: {
         userId: req.params.id,
       },
-      include: [sequelize.Category],
+      include: [sequelize.User, sequelize.Category, sequelize.Image],
     });
     res.json(items);
   },
@@ -28,7 +41,7 @@ module.exports = {
   // Get one item
   async getOneItem(req, res) {
     const item = await sequelize.Item.findByPk(req.params.id, {
-      include: [sequelize.User],
+      include: [sequelize.User, sequelize.Category, sequelize.Image],
     });
     res.json(item);
   },
@@ -36,6 +49,23 @@ module.exports = {
   // Create an item
   async createItem(req, res) {
     const item = await sequelize.Item.create(req.body);
+    const categoriesIds = req.body.categories;
+    if (categoriesIds && categoriesIds.length > 0) {
+      categoriesIds.forEach(async (categoryId) => {
+          const categoryToAdd = await sequelize.Category.findByPk(categoryId);
+          await item.addCategory(categoryToAdd);
+      });
+    }
+
+    req.files.forEach(async (image) => {
+      await sequelize.Image.create({
+        itemId: item.id,
+        filename: image.filename,
+        fileType: image.mimetype,
+        fileSize: image.size,
+      });
+    });
+
     res.json(item);
   },
   // PUT /api/items/:id
