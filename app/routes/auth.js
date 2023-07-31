@@ -12,6 +12,6 @@ router.post('/login', authController.login);
 
 // GET /api/auth
 // Email verification
-router.get('/verify/verificationCode', authController.verifyEmail);
+router.get('/verifyemail/:verificationCode', authController.verifyEmail);
 
 module.exports = router;

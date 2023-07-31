@@ -52,6 +52,9 @@ module.exports = {
       city: {
         type: Sequelize.STRING
       },
+      confirmationToken: {
+        type: Sequelize.STRING
+      },
       roleId: {
         type: Sequelize.INTEGER,
         allowNull: false,
