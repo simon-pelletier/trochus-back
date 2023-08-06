@@ -4,17 +4,19 @@ const router = express.Router();
 
 const upload = require("../middlewares/multer-config");
 
+const verifyToken = require("../middlewares/verifyToken");
+
 // GET /api/items
 // Get all items
-router.get("/", itemController.getAllItems);
+router.get("/", verifyToken, itemController.getAllItems);
 
 // GET /api/items/published
 // Get all published items
-router.get("/published", itemController.getAllPublishedItems);
+router.get("/published", verifyToken, itemController.getAllPublishedItems);
 
 // GET /api/items/user/:id
 // Get all items by user
-router.get("/user/:id", itemController.getAllItemsByUser);
+router.get("/user/:id", verifyToken, itemController.getAllItemsByUser);
 
 // GET /api/items/:id
 // Get one item

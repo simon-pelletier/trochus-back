@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 const emailValidator = require("email-validator");
-const uuid = require('uuid');
+const uuid = require("uuid");
 
 const sequelize = require("../../models/index.js");
 
@@ -90,11 +90,16 @@ module.exports = {
       user.confirmationToken = null;
       user.activated = 1;
       await user.save();
-    }
 
-    res.json({
-      action: "emailConfirmation",
-      status: "success",
-    });
+      res.json({
+        action: "emailConfirmation",
+        status: "success",
+      });
+    } else {
+      res.json({
+        action: "emailConfirmation",
+        status: "error",
+      });
+    }
   },
 };

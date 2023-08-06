@@ -3,7 +3,6 @@
 const nodemailer = require("nodemailer");
 
 const sendEmail = async (email, subject, text) => {
-    console.log("****************** sendEmail");
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -21,11 +20,9 @@ const sendEmail = async (email, subject, text) => {
     };
 
     const result = await transporter.sendMail(mailOptions);
-    console.log("result", result);
+    
     return result;
   } catch (error) {
-    //! INVALID LOGIN !!
-    console.log("error", error);
     return error;
   }
 };
